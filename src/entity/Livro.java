@@ -12,6 +12,15 @@ public class Livro {
 	private int id;
 	private boolean disponibilidade;
 	private String genero;
+	private float valor;
+
+	public float getValor() {
+		return valor;
+	}
+
+	public void setValor(float valor) {
+		this.valor = valor;
+	}
 
 	public String getNome() { 
         
