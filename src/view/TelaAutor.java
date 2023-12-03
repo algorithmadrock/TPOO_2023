@@ -1,5 +1,20 @@
 package view;
 
-public class TelaAutor {
+import javafx.scene.control.TableView;
+import javafx.scene.layout.Pane;
+
+public class TelaAutor implements TelaMudar{
+
+	@Override
+	public Pane renderizaPainel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public TableView retornaTabela() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
