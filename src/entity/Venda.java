@@ -29,7 +29,7 @@ public class Venda {
 	}
 
 	public void setIdfunc(Funcionario funcionario) {
-		this.idfunc = funcionario.id;
+		this.idfunc = funcionario.getId();
 	}
 
 	public int getIdclie() {
@@ -37,7 +37,7 @@ public class Venda {
 	}
 
 	public void setIdclie(Cliente cliente) {
-		this.idclie = cliente.id;
+		this.idclie = cliente.getId();
 	}
 
 	public LocalDate getData() {
@@ -46,6 +46,7 @@ public class Venda {
 
 	public void setData(LocalDate data) {
 		this.data = data;
+		
 	}
 
 	public float getValor() {
@@ -53,10 +54,10 @@ public class Venda {
 	}
 	
 	public void setValor() {
-		Object[] livros =  itens.toArray();
+		Livro[] livros = (Livro[]) itens.toArray();
 		float valor = (float) 0.00;
-		for (Object livro : livros) {
-			valor += livro.valor;
+		for (Livro livro: livros) {
+			valor+= livro.getValor();
 		}
 		this.valor = valor;
 	}
