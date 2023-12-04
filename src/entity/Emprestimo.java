@@ -2,17 +2,22 @@ package entity;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Set;
 
 public class Emprestimo {
 	private int id;
-	private LocalDate dtDevolucao;
-	private Cliente cliente;
-	private Livro livro;
-	private LocalDate dtEmprestimo;
+	private LocalDate emprestimo, devolucao;
+	private int idClie;
+	private String nmClie;
+	private Set<Livro> livros;
 	private float valor;
 
-	public float calcularValor(LocalDate dtDevolucao, LocalDate dtEmprestimo) {
-		valor = 20 + dtEmprestimo.until(dtDevolucao, ChronoUnit.DAYS) * 2;
+	public Emprestimo() {
+	
+	}
+	
+	public float calcValor(int dias) {
+		valor = (float)(dias * 1.25);
 		return valor;
 	}
 
@@ -24,36 +29,45 @@ public class Emprestimo {
 		this.id = id;
 	}
 
-	public LocalDate getDtDevolucao() {
-		return dtDevolucao;
+	public LocalDate getDevolucao() {
+		return devolucao;
 	}
 
-	public void setDtDevolucao(LocalDate dtDevolucao) {
-		this.dtDevolucao = dtDevolucao;
+	public void setDevolucao(LocalDate dtEmprestimo, int dias) {
+		this.devolucao = emprestimo.plusDays(dias);
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public String getNmClie() {
+		return nmClie;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setNmClie(String nmClie) {
+		this.nmClie = nmClie;
+	}
+	
+	public int getIdClie() {
+		return idClie;
 	}
 
-	public Livro getLivro() {
-		return livro;
+	public void setIdClie(int idClie) {
+		this.idClie = idClie;
+	}
+	
+
+	public Set<Livro> getLivros() {
+		return livros;
 	}
 
-	public void setLivro(Livro livro) {
-		this.livro = livro;
+	public void setLivros(Livro livro) {
+		this.livros.add(livro);
 	}
 
-	public LocalDate getDtEmprestimo() {
-		return dtEmprestimo;
+	public LocalDate getEmprestimo() {
+		return emprestimo;
 	}
 
-	public void setDtEmprestimo(LocalDate dtEmprestimo) {
-		this.dtEmprestimo = dtEmprestimo;
+	public void setEmprestimo(LocalDate emprestimo) {
+		this.emprestimo = emprestimo;
 	}
 
 	public float getValor() {
