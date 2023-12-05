@@ -100,6 +100,12 @@ public class Livro {
     
     }
     
+    public void setAno(LocalDate sAno) {
+        
+        this.ano = sAno;
+    
+    }
+    
     public void setAno(String sAno, DateTimeFormatter dtfa) {
         
         LocalDate a = LocalDate.parse(sAno, dtfa);

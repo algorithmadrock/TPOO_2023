@@ -53,6 +53,7 @@ public class TelaPrincipal extends Application{
 		
 		BorderPane painel = new BorderPane();
 		painel.setTop(barraMenu);
+		painel.setTop(new TelaLivro().renderizaPainel());
 		Scene cena = new Scene(painel);
 		stage.setScene(cena);
 		stage.show();
