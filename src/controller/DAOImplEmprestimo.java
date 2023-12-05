@@ -25,8 +25,7 @@ public class DAOImplEmprestimo implements DAOEmprestimo{
 	}
 	@Override
 	public void salvar(Emprestimo emp) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
@@ -39,11 +38,10 @@ public class DAOImplEmprestimo implements DAOEmprestimo{
 	public List<Emprestimo> pesquisarId(int id) {
 		// TODO Auto-generated method stub
 		return null;
+		}
 	}
-
-}
 /*
- * import java.sql.Connection;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -119,4 +117,3 @@ public class AlunoDAOImpl implements AlunoDAO {
 	}
 
 }*/
- */

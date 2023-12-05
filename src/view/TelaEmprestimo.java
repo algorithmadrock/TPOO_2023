@@ -37,14 +37,13 @@ public class TelaEmprestimo implements TelaMudar{
 		
 		centertela();
 		bottomtela();
-	
 	}
 
 	public void bottomtela() {
 		table1.setItems(control.getLista());
 		
 		TableColumn<Emprestimo, Integer> colId = new TableColumn<>("Id");
-		colId.setCellValueFactory(new PropertyValueFactory<Emprestimo, Integer>("id") );
+		colId.setCellValueFactory(new PropertyValueFactory<Emprestimo, Integer>("Id") );
 		
 		TableColumn<Emprestimo, String> colEmData = new TableColumn<>("Data Emprestimo");
 		colEmData.setCellValueFactory( itemData ->	new ReadOnlyStringWrapper( dtf.format(itemData.getValue().getEmprestimo()) ));	
@@ -68,71 +67,67 @@ public class TelaEmprestimo implements TelaMudar{
 		
 		GridPane subpainel = new GridPane();
 		subpainel.setRowSpan(subpainel, 8);
-		subpainel.setColumnSpan(subpainel, 6);
+		subpainel.setColumnSpan(subpainel,10);
 		
 		//ELEMENTOS DO CENÁRIO
-		Label lblId = new Label("ID #"); 
-		subpainel.add(lblId, 1, 1);
+		Label lblId = new Label("ID # "); 
+		subpainel.add(lblId, 2, 1);
 		TextField txtId = new TextField();
-		subpainel.add(txtId, 1, 2);
+		subpainel.add(txtId, 3, 1);
 		txtId.setEditable(false);
 		
-		Label lblEmData = new Label("DATA"); 
-		subpainel.add(lblEmData, 2, 1);
+		Label lblEmData = new Label("DATA "); 
+		subpainel.add(lblEmData, 2, 2);
 		TextField txtEmData = new TextField();
-		subpainel.add(txtEmData, 2, 2);
+		subpainel.add(txtEmData, 3, 2);
 		
-		Label lblDias = new Label("DIAS"); 
-		subpainel.add(lblDias, 2, 3);
+		Label lblDias = new Label("DIAS "); 
+		subpainel.add(lblDias, 6, 2);
 		TextField txtDias = new TextField();
-		subpainel.add(txtDias, 2, 4);
+		subpainel.add(txtDias, 7, 2);
 		
-		Label lblDeData = new Label("DEVOLUÇÃO"); 
-		subpainel.add(lblDeData, 2, 5);
+		Label lblDeData = new Label("DEVOLUÇÃO "); 
+		subpainel.add(lblDeData, 9, 2);
 		TextField txtDeData = new TextField();
-		subpainel.add(txtDeData, 2, 6);
+		subpainel.add(txtDeData, 10, 2);
 		txtDeData.setEditable(false);
 		
 		Label lblCliente = new Label("DADOS DO CLIENTE"); 
-		subpainel.add(lblCliente, 3, 1);
+		subpainel.add(lblCliente, 1, 3);
 		
-		Label lblIdClie = new Label("ID #"); 
-		subpainel.add(lblId, 4, 1);
+		Label lblIdClie = new Label("ID # "); 
+		subpainel.add(lblIdClie, 2, 4);
 		TextField txtIdClie = new TextField();
-		subpainel.add(txtIdClie, 4, 2);
+		subpainel.add(txtIdClie, 3, 4);
 		
 		Button busCli = new Button("-O");
-		subpainel.add(busCli, 4, 3);
+		subpainel.add(busCli, 4, 4);
 		
-		Label lblNmClie = new Label("NOME"); 
-		subpainel.add(lblNmClie, 4, 4);
+		Label lblNmClie = new Label(" NOME "); 
+		subpainel.add(lblNmClie, 6, 4);
 		TextField txtNmClie = new TextField();
-		subpainel.add(txtNmClie, 4, 5);
+		subpainel.add(txtNmClie, 7, 4);
 		txtNmClie.setEditable(false);
 		
 		
 		Label lblLivro = new Label("DADOS DOS LIVROS");
-		subpainel.add(lblLivro, 5, 1);
+		subpainel.add(lblLivro, 1, 5);
 		
 		Label lblIdLivro = new Label("ID #"); 
-		subpainel.add(lblLivro, 6, 1);
+		subpainel.add(lblIdLivro, 2, 6);
 		TextField txtIdLivro = new TextField();
-		subpainel.add(txtIdLivro, 6, 2);
-		
+		subpainel.add(txtIdLivro, 3, 6);
 		Button busLi = new Button("-O");
-		subpainel.add(busLi, 6, 3);
+		subpainel.add(busLi, 4, 6);
 		
-		TextField txtSetLivros = new TextField(); 
-		subpainel.add(txtSetLivros, 7, 1);
-		
-		Label lblValor = new Label("VALOR R$"); 
-		subpainel.add(lblValor, 8, 1);
+		Label lblValor = new Label("R$ "); 
+		subpainel.add(lblValor, 2, 8);
 		TextField txtValor = new TextField();
-		subpainel.add(txtValor, 8, 2);
+		subpainel.add(txtValor, 3, 8);
 		txtValor.setEditable(false);
 		
 		Button btnsalvar = new Button("Adicionar");
-		subpainel.add(btnsalvar, 8, 6);
+		subpainel.add(btnsalvar, 10, 8);
 		
 		painel.setCenter(subpainel);
 		generateBindings(txtId, txtDeData, txtEmData, txtIdClie, txtNmClie, txtIdLivro, txtValor);

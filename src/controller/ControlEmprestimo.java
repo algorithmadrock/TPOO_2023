@@ -29,15 +29,14 @@ public class ControlEmprestimo {
 	private DAOEmprestimo emprestimoDAO;
 	 
 	public ControlEmprestimo() {
-		
 		id = new SimpleIntegerProperty(0);
 		emData = new SimpleObjectProperty<>(LocalDate.now());
-//		dedata = new SimpleObjectProperty<>(LocalDate.now());
+//		deData = new SimpleObjectProperty<>(LocalDate.now());
 		idClie = new SimpleIntegerProperty(0);
 		nmClie  = new SimpleStringProperty("");
 		idLivro = new SimpleIntegerProperty(0);
 		valor = new SimpleFloatProperty(0);
-		emprestimoDAO = new DAOImplEmprestimo();
+//		emprestimoDAO = new DAOImplEmprestimo();
 		lista = FXCollections.observableArrayList();
 	}
 	
@@ -69,23 +68,22 @@ public class ControlEmprestimo {
 		Emprestimo emp = new Emprestimo();
 		emp.setId(this.id.get());
 		emp.setEmprestimo(this.emData.get());
-//		emp.setEmprestimo(this.emData.get());
+//		emp.setDevolucao(this.deData.get());
 		emp.setIdClie(this.idClie.get());
 		emp.setValor(this.valor.get());
 		
 		Livro liv = new Livro();
 		liv.setId(this.idLivro.get());
 		
+		emp.setLivros(liv);
 		emprestimoDAO.salvar(emp);
 		lerTodos();
 	}
-	
 	public void lerTodos() { 
 		List<Emprestimo> emprestimos = emprestimoDAO.lerTodos();
 		lista.clear();
 		lista.addAll( emprestimos );
 	}
-	
 	public void ler() { 
 		List<Emprestimo> alunos = emprestimoDAO.pesquisarId(id.get());
 		lista.clear();
