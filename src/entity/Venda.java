@@ -66,7 +66,7 @@ public class Venda {
 		return itens;
 	}
 
-	public void setItens(Livro livro) {
+	public void setItens(Livro... livro) {
 		this.itens.add(livro);
 	}
 	
