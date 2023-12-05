@@ -6,18 +6,17 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.Date;
 import java.util.List;
-
 import entity.Editora;
-
 import java.util.ArrayList;
 import java.sql.ResultSet;
 
 public class EditoraDAOImpl implements EditoraDAO{
 	
-	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/escola?characterEncoding=latin1";
+	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/biblioteca";
 	private static final String JDBC_USER = "root";
 	private static final String JDBC_PASS = "alunofatec";
 	private Connection con;
+	
 	public EditoraDAOImpl() {
 
 		try {
@@ -39,14 +38,14 @@ public class EditoraDAOImpl implements EditoraDAO{
 	@Override
 	public void salvar(Editora ed) {
 		
-		String sql = "INSERT INTO livros " + "(id, nome, localizacao) VALUES " + "(?, ?, ?)";
+		String sql = "INSERT INTO editora " + "(id, nome, localizacao) VALUES " + "(?, ?, ?)";
 
 		try {
 			
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, ed.getId());
 			stmt.setString(2, ed.getNome());
-			stmt.setObject(3, ed.getLocalizacao());
+			stmt.setString(3, ed.getLocalizacao());
 			stmt.executeUpdate();
 			
 		} catch (SQLException e) {

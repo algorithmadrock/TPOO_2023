@@ -1,7 +1,6 @@
 package controller;
 
 import java.time.LocalDate;
-
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.StringProperty;
@@ -13,7 +12,6 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import java.util.List;
-
 import entity.Autor;
 import entity.Editora;
 import entity.Livro;

@@ -6,9 +6,7 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.Date;
 import java.util.List;
-
 import entity.Livro;
-
 import java.util.ArrayList;
 import java.sql.ResultSet;
 

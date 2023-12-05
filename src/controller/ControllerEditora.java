@@ -7,7 +7,6 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.property.SimpleStringProperty;
 import java.util.List;
-
 import entity.Editora;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
@@ -19,7 +18,7 @@ public class ControllerEditora {
 	private StringProperty localizacao  = new SimpleStringProperty("");
 	private ListProperty livro = new SimpleListProperty(null);
 
-	private ObservableList<Editora> lista = FXCollections.observableArrayList();
+	private ObservableList<Editora> listaEditora = FXCollections.observableArrayList();
 
 	private EditoraDAO editoraDAO = new EditoraDAOImpl();
 
@@ -49,18 +48,18 @@ public class ControllerEditora {
 
 	public ObservableList<Editora> getLista() {
 		
-		return this.lista;
+		return this.listaEditora;
 		
 	}
 
 	public void salvar() {
 		
-		Editora e = new Editora();
-		e.setId(id.get());
-		e.setNome(nome.get());
-		e.setLocalizacao(localizacao.get());
+		Editora ed = new Editora();
+		ed.setId(id.get());
+		ed.setNome(nome.get());
+		ed.setLocalizacao(localizacao.get());
 		
-		editoraDAO.salvar(e);
+		editoraDAO.salvar(ed);
 		lerTodos();
 
 	}
@@ -68,8 +67,8 @@ public class ControllerEditora {
 	public void lerTodos() {
 		
 		List<Editora> editoras = editoraDAO.lerTodos();
-		lista.clear();
-		lista.addAll(editoras);
+		listaEditora.clear();
+		listaEditora.addAll(editoras);
 		
 	}
 	

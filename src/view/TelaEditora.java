@@ -22,12 +22,7 @@ import javafx.scene.control.TextField;
 
 public class TelaEditora implements TelaMudar{
 	
-	private int id;
-	private String nome;
-	private String localizacao;
-	private Set<Livro> catalogo;
-	
-	private TableView<Editora> table = new TableView<>();
+	private TableView<Editora> tableEditora = new TableView<>();
 	private TextField txtId = new TextField();
 	private TextField txtNome = new TextField();
 	private TextField txtLocalizacao = new TextField();
@@ -46,7 +41,7 @@ public class TelaEditora implements TelaMudar{
 
 	public void generateTable() {
 
-		table.setItems(control.getLista());
+		tableEditora.setItems(control.getLista());
 		
 		TableColumn<Editora, Integer> colId = new TableColumn<>("Id");
 		colId.setCellValueFactory(new PropertyValueFactory<Editora, Integer>("id"));
@@ -57,7 +52,7 @@ public class TelaEditora implements TelaMudar{
 		TableColumn<Editora, String> colLocalizacao = new TableColumn<>("Localizacao");
 		colLocalizacao.setCellValueFactory(itemData ->	new ReadOnlyObjectWrapper(itemData.getValue().getLocalizacao()));
 
-		table.getColumns().addAll(colId, colNome, colLocalizacao);
+		tableEditora.getColumns().addAll(colId, colNome, colLocalizacao);
 
 	}
 
@@ -68,6 +63,7 @@ public class TelaEditora implements TelaMudar{
 		txtId.setEditable(false);
 
 		GridPane panFormulario = new GridPane();
+		
 		panFormulario.add(new Label("Id: "), 0, 0);
 		panFormulario.add(txtId, 1, 0);
 		panFormulario.add(new Label("Nome: "), 0, 1);
@@ -80,7 +76,7 @@ public class TelaEditora implements TelaMudar{
 		btnSalvar.setOnAction(e-> control.salvar());
 		btnPesquisar.setOnAction(e -> control.ler());
 
-		panPrincipal.setCenter(table);
+		panPrincipal.setCenter(tableEditora);
 		panPrincipal.setTop(panFormulario);
 
 		generateBindings();
@@ -99,7 +95,7 @@ public class TelaEditora implements TelaMudar{
 	@Override
 	public TableView retornaTabela() {
 
-		return table;
+		return tableEditora;
 		
 	}
 
