@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 public class TelaPrincipal extends Application{
 	
+	private TelaCategoria telaCategoria = new TelaCategoria();
+	private TelaAutor telaAutor = new TelaAutor();
+	
 	
 	
 	@Override
@@ -53,10 +56,10 @@ public class TelaPrincipal extends Application{
 		
 		BorderPane painel = new BorderPane();
 		painel.setTop(barraMenu);
-		painel.setTop(new TelaFornecedor().renderizaPainel());
 		Scene cena = new Scene(painel);
 		stage.setScene(cena);
 		stage.show();
+		painel.setCenter(telaAutor.renderizaPainel());
 	}
 	
 	public static void main(String[] args) {
