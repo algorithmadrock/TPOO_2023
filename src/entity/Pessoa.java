@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public abstract class Pessoa {
 	private String nome;
-	private LocalDate dataNascimento;
+	private LocalDate dtNascimento;
 
 	public String getNome() {
 		return nome;
@@ -14,11 +14,11 @@ public abstract class Pessoa {
 		this.nome = nome;
 	}
 
-	public LocalDate getDataNascimento() {
-		return dataNascimento;
+	public LocalDate getDtNascimento() {
+		return dtNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
-		this.dataNascimento = dataNascimento;
+	public void setDtNascimento(LocalDate dtNascimento) {
+		this.dtNascimento = dtNascimento;
 	}
 }

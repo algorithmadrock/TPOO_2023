@@ -3,7 +3,7 @@ package view;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 
-public class TelaCliente implements TelaMudar{
+public class TelaCliente implements TelaMudar {
 
 	@Override
 	public Pane renderizaPainel() {
