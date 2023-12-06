@@ -53,7 +53,7 @@ public class TelaAutor implements TelaMudar {
 
 		TableColumn<Autor, String> colNascimento = new TableColumn<>("Nascimento");
 		colNascimento.setCellValueFactory(
-				itemData -> new ReadOnlyStringWrapper(dtf.format(itemData.getValue().getDataNascimento())));
+				itemData -> new ReadOnlyStringWrapper(dtf.format(itemData.getValue().getDtNascimento())));
 
 		table.getColumns().addAll(colID, colNome, colNacionalidade, colNascimento);
 	}

@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Venda {
 
-	private static int id;
+	private int id;
 	private int idfunc;
 	private int idclie;
 	private LocalDate data;
@@ -16,27 +16,27 @@ public class Venda {
 		id++;
 	}
 
-	public static int getId() {
+	public int getId() {
 		return id;
 	}
 
-	public static void setId(int id) {
-		Venda.id = id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public int getIdfunc() {
+	public int getIdFunc() {
 		return idfunc;
 	}
 
-	public void setIdfunc(Funcionario funcionario) {
+	public void setIdFunc(Funcionario funcionario) {
 		this.idfunc = funcionario.getId();
 	}
 
-	public int getIdclie() {
+	public int getIdClie() {
 		return idclie;
 	}
 
-	public void setIdclie(Cliente cliente) {
+	public void setIdClie(Cliente cliente) {
 		this.idclie = cliente.getId();
 	}
 
@@ -66,7 +66,7 @@ public class Venda {
 		return itens;
 	}
 
-	public void setItens(Livro... livro) {
+	public void setItens(Livro livro) {
 		this.itens.add(livro);
 	}
 

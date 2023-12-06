@@ -88,7 +88,7 @@ public class TelaCliente implements TelaMudar{
 		TableColumn<Cliente, String> colNascimento = new TableColumn<>("Nascimento");
 		colNascimento.setCellValueFactory(
 				itemData -> new ReadOnlyStringWrapper(
-						dtf.format(itemData.getValue().getDataNascimento())));
+						dtf.format(itemData.getValue().getDtNascimento())));
 		
 		TableColumn<Cliente, String> colCPF = new TableColumn<>("CPF");
 		colCPF.setCellValueFactory(

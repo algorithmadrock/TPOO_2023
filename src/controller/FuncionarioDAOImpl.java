@@ -21,7 +21,7 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 	public FuncionarioDAOImpl() {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			con = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
+			con = (Connection) DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -33,17 +33,16 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 
 	@Override
 	public void salvar(Funcionario f) {
-		String sql = "INSERT INTO funcionarios "
-				+ "(id, nome, dtNascimento, cargo, dtContratacao, salario, cpf) VALUES " + "(?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO funcionario "
+				+ "(nome, dtNascimento, cargo, dtContratacao, salario, cpf) VALUES " + "(?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setInt(1, f.getId());
-			stmt.setString(2, f.getNome());
-			stmt.setDate(3, Date.valueOf(f.getDtNascimento()));
-			stmt.setString(4, f.getCargo());
-			stmt.setDate(5, Date.valueOf(f.getDtContratacao()));
-			stmt.setFloat(6, f.getSalario());
-			stmt.setString(7, f.getCpf());
+			stmt.setString(1, f.getNome());
+			stmt.setDate(2, Date.valueOf(f.getDtNascimento()));
+			stmt.setString(3, f.getCargo());
+			stmt.setDate(4, Date.valueOf(f.getDtContratacao()));
+			stmt.setFloat(5, f.getSalario());
+			stmt.setString(6, f.getCpf());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -81,6 +80,30 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 			e.printStackTrace();
 		}
 		return lista;
+	}
+	
+	public Funcionario pesquisarId(int id) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM funcionarios WHERE Id = ?";
+		Funcionario f = new Funcionario();
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, id );
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				f.setId(rs.getInt("id"));
+				f.setNome(rs.getString("nome"));
+				f.setDtNascimento(rs.getDate("dtNascimento").toLocalDate());
+				f.setCargo(rs.getString("cargo"));
+				f.setDtContratacao(rs.getDate("dtContratacao").toLocalDate());
+				f.setSalario(rs.getFloat("salario"));
+				f.setCpf(rs.getString("cpf"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return f;
 	}
 
 }

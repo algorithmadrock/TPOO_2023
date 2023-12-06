@@ -10,8 +10,8 @@ import javafx.stage.Stage;
 
 public class TelaPrincipal extends Application {
 
-	private TelaCategoria telaCategoria = new TelaCategoria();
-	private TelaAutor telaAutor = new TelaAutor();
+	private TelaMudar telaAtual = new TelaAutor();;
+	BorderPane painel = new BorderPane();
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -49,13 +49,25 @@ public class TelaPrincipal extends Application {
 
 		barraMenu.getMenus().addAll(mAutor, mCategoria, mCliente, mDevolucao, mEditora, mEmprestimo, mFornecedor,
 				mFuncionario, mLivro, mVenda);
-
-		BorderPane painel = new BorderPane();
+		
+		autor.setOnAction(ct -> {telaAtual=new TelaAutor();painel.setCenter(telaAtual.renderizaPainel());});
+		categoria.setOnAction(ct -> {telaAtual=new TelaCategoria();painel.setCenter(telaAtual.renderizaPainel());});
+		cliente.setOnAction(ct -> {telaAtual=new TelaCliente();painel.setCenter(telaAtual.renderizaPainel());});
+		devolucao.setOnAction(ct -> {telaAtual=new TelaDevolucao();painel.setCenter(telaAtual.renderizaPainel());});
+		editora.setOnAction(ct -> {telaAtual=new TelaEditora();painel.setCenter(telaAtual.renderizaPainel());});
+		emprestimo.setOnAction(ct -> {telaAtual=new TelaEmprestimo();painel.setCenter(telaAtual.renderizaPainel());});
+		fornecedor.setOnAction(ct -> {telaAtual=new TelaFornecedor();painel.setCenter(telaAtual.renderizaPainel());});
+		funcionario.setOnAction(ct -> {telaAtual=new TelaFuncionario();painel.setCenter(telaAtual.renderizaPainel());});
+		livro.setOnAction(ct -> {telaAtual=new TelaLivro();painel.setCenter(telaAtual.renderizaPainel());});
+		venda.setOnAction(ct -> {telaAtual=new TelaVenda();painel.setCenter(telaAtual.renderizaPainel());});
+		
 		painel.setTop(barraMenu);
 		Scene cena = new Scene(painel);
 		stage.setScene(cena);
 		stage.show();
-		painel.setCenter(telaAutor.renderizaPainel());
+		painel.setCenter(telaAtual.renderizaPainel());
+		stage.setHeight(500);
+		stage.setWidth(700);
 	}
 
 	public static void main(String[] args) {

@@ -46,7 +46,7 @@ public class ControllerCliente {
 		Cliente c = new Cliente();
 		c.setId(id.getValue());
 		c.setNome(nome.getValue());
-		c.setDataNascimento(nascimento.getValue());
+		c.setDtNascimento(nascimento.getValue());
 		c.setCpf(cpf.getValue());
 		c.setEndereco(endereco.getValue());
 		c.setTelefone(telefone.getValue());

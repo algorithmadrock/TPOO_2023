@@ -26,6 +26,9 @@ public class ControllerVenda {
 	private ListProperty<Livro> livros = new SimpleListProperty<>();
 	private ObservableList<Cliente> clientes = FXCollections.observableArrayList();
 	
+	private ClienteDAOimp cliDAO = new ClienteDAOimp();
+	private FuncionarioDAOImpl funDAO = new FuncionarioDAOImpl();
+	
 	public IntegerProperty idProperty() {
 		return id;
 	}
@@ -55,8 +58,8 @@ public class ControllerVenda {
 	public void salvarCliente() {
 		Venda v = new Venda();
 		v.setId(id.getValue());
-		v.setIdfunc(funcionario.getValue());
-		v.setIdclie(cliente.getValue());
+		v.setIdFunc(funDAO.pesquisarId(funcionario.getValue()));
+		v.setIdClie(cliDAO.pesquisarId(cliente.getValue()));
 		v.setData(data.getValue());
 		v.setItens(null);
 		v.setValor();
