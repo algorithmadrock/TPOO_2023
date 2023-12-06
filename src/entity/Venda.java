@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 public class Venda {
-	
+
 	private static int id;
 	private int idfunc;
 	private int idclie;
@@ -46,18 +46,18 @@ public class Venda {
 
 	public void setData(LocalDate data) {
 		this.data = data;
-		
+
 	}
 
 	public float getValor() {
 		return valor;
 	}
-	
+
 	public void setValor() {
 		Livro[] livros = (Livro[]) itens.toArray();
 		float valor = (float) 0.00;
-		for (Livro livro: livros) {
-			valor+= livro.getValor();
+		for (Livro livro : livros) {
+			valor += livro.getValor();
 		}
 		this.valor = valor;
 	}
@@ -69,6 +69,5 @@ public class Venda {
 	public void setItens(Livro... livro) {
 		this.itens.add(livro);
 	}
-	
 
 }
