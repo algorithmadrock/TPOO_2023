@@ -2,7 +2,6 @@ package controller;
 
 import java.time.LocalDate;
 import java.util.List;
-
 import entity.Autor;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -46,7 +45,7 @@ public class ControllerAutor {
 		a.setId(id.get());
 		a.setNome(nome.get());
 		a.setNacionalidade(nacionalidade.get());
-		a.setDataNascimento(nascimento.get());
+		a.setDtNascimento(nascimento.get());
 		
 		autorDAO.salvar(a);
 		lerTodos();
