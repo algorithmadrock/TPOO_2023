@@ -50,10 +50,10 @@ public class TelaDevolucao implements TelaMudar{
 		colData.setCellValueFactory( itemData ->	new ReadOnlyStringWrapper( dtf.format(itemData.getValue().getData()) ));	
 		
 		TableColumn<Devolucao, Float> colMulta = new TableColumn<>("Multa");
-		colMulta.setCellValueFactory(new PropertyValueFactory<Devolucao, Integer>("Multa") );
+		colMulta.setCellValueFactory(new PropertyValueFactory<Devolucao, Float>("Multa") );
 		
 		TableColumn<Devolucao, Boolean> colStatus = new TableColumn<>("Status");
-		colStatus.setCellValueFactory(new PropertyValueFactory<Emprestimo, Boolean>("Status"));
+		colStatus.setCellValueFactory(new PropertyValueFactory<Devolucao, Boolean>("Status"));
 		
  
         table.getColumns().addAll(colId, colData, colMulta, colStatus);

@@ -30,13 +30,17 @@ public class DAOImplDevolucao implements DAODevolucao{
 			// TODO Auto-generated method stub		
 		}
 
-		@Override
 		public List<Devolucao> lerTodos() {
 			// TODO Auto-generated method stub
 			return null;			
 		}
+		@Override
+		public List<Devolucao> pesquisarId(int id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+}
 
-	}
 	/*
 	import java.sql.Connection;
 	import java.sql.Date;
@@ -114,6 +118,3 @@ public class DAOImplDevolucao implements DAODevolucao{
 		}
 
 	}*/
-	 */
-
-}
