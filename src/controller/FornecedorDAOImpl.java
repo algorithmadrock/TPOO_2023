@@ -32,7 +32,7 @@ public class FornecedorDAOImpl implements FornecedorDAO {
 
 	@Override
 	public void salvar(Fornecedor f) {
-		String sql = "INSERT INTO fornecedores " + "(id, cnpj, nome, status) VALUES " + "(?, ?, ?)";
+		String sql = "INSERT INTO fornecedor " + "(Id, cnpj, nome, status) VALUES " + "(?, ?, ?)";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, f.getId());
@@ -55,14 +55,14 @@ public class FornecedorDAOImpl implements FornecedorDAO {
 	public Set<Fornecedor> pesquisarNome(String nome) {
 		// TODO Auto-generated method stub
 		Set<Fornecedor> lista = new HashSet<>();
-		String sql = "SELECT * FROM fornecedores WHERE nome LIKE ?";
+		String sql = "SELECT * FROM fornecedor WHERE nome LIKE ?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, "%" + nome + "%");
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Fornecedor f = new Fornecedor();
-				f.setId(rs.getInt("id"));
+				f.setId(rs.getInt("Id"));
 				f.setCnpj(rs.getString("cnpj"));
 				f.setNome(rs.getString("nome"));
 				f.setStatus(rs.getBoolean("status"));
