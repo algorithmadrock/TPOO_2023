@@ -1,7 +1,5 @@
 package view;
 
-
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
@@ -10,13 +8,11 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class TelaPrincipal extends Application{
-	
+public class TelaPrincipal extends Application {
+
 	private TelaCategoria telaCategoria = new TelaCategoria();
 	private TelaAutor telaAutor = new TelaAutor();
-	
-	
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		MenuBar barraMenu = new MenuBar();
@@ -50,10 +46,10 @@ public class TelaPrincipal extends Application{
 		mFuncionario.getItems().add(funcionario);
 		mLivro.getItems().add(livro);
 		mVenda.getItems().add(venda);
-		
-		
-		barraMenu.getMenus().addAll(mAutor,mCategoria,mCliente,mDevolucao,mEditora, mEmprestimo,mFornecedor, mFuncionario,mLivro,mVenda);
-		
+
+		barraMenu.getMenus().addAll(mAutor, mCategoria, mCliente, mDevolucao, mEditora, mEmprestimo, mFornecedor,
+				mFuncionario, mLivro, mVenda);
+
 		BorderPane painel = new BorderPane();
 		painel.setTop(barraMenu);
 		Scene cena = new Scene(painel);
@@ -61,7 +57,7 @@ public class TelaPrincipal extends Application{
 		stage.show();
 		painel.setCenter(telaAutor.renderizaPainel());
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}
