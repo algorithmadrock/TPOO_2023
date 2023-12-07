@@ -33,8 +33,8 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 
 	@Override
 	public void salvar(Funcionario f) {
-		String sql = "INSERT INTO funcionario "
-				+ "(Id, Nome, Nascimento, Cargo, Contratacao, Salario, Cpf) VALUES " + "(?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO funcionario " + "(Id, Nome, Nascimento, Cargo, Contratacao, Salario, Cpf) VALUES "
+				+ "(?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, f.getId());
