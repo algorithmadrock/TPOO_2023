@@ -71,7 +71,6 @@ public class ControllerFuncionario {
 		f.setSalario(salario.get());
 
 		funcionarioDAO.salvar(f);
-		lerTodos();
 	}
 
 	public void lerTodos() {
