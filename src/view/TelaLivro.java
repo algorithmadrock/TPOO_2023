@@ -58,30 +58,30 @@ public class TelaLivro implements TelaMudar {
 		table.setItems(control.getLista());
 		
 		TableColumn<Livro, Integer> colId = new TableColumn<>("Id");
-		colId.setCellValueFactory(new PropertyValueFactory<Livro, Integer>("id"));
+		colId.setCellValueFactory(new PropertyValueFactory<Livro, Integer>("Id"));
 
 		TableColumn<Livro, String> colNome = new TableColumn<>("Nome");
 		colNome.setCellValueFactory(itemData ->	new ReadOnlyStringWrapper(itemData.getValue().getNome()));
 		
 		TableColumn<Livro, Object> colAutor = new TableColumn<>("Autor");
-		colAutor.setCellValueFactory(itemData ->	new ReadOnlyObjectWrapper(itemData.getValue().getAutor().getNome()));
+		colAutor.setCellValueFactory(itemData -> new ReadOnlyObjectWrapper(itemData.getValue().getAutor().getNome()));
 		
 		TableColumn<Livro, Object> colEditora = new TableColumn<>("Editora");
-		colEditora.setCellValueFactory(itemData ->	new ReadOnlyObjectWrapper(itemData.getValue().getEditora().getNome()));
+		colEditora.setCellValueFactory(itemData -> new ReadOnlyObjectWrapper(itemData.getValue().getEditora().getNome()));
 		
 		TableColumn<Livro, Boolean> colDisponibilidade = new TableColumn<>("Disponibilidade");
 		colDisponibilidade.setCellValueFactory(new PropertyValueFactory<Livro, Boolean>("Disponibilidade"));
 		
 		TableColumn<Livro, String> colGenero = new TableColumn<>("Genero");
-		colGenero.setCellValueFactory(itemData ->	new ReadOnlyStringWrapper(itemData.getValue().getGenero()));
+		colGenero.setCellValueFactory(itemData -> new ReadOnlyStringWrapper(itemData.getValue().getGenero()));
 		
 		TableColumn<Livro, Float> colValor = new TableColumn<>("Valor");
 		colValor.setCellValueFactory((new PropertyValueFactory<Livro, Float>("Valor")));
 
 		TableColumn<Livro, String> colAno = new TableColumn<>("Ano");
-		colAno.setCellValueFactory(itemData ->	new ReadOnlyStringWrapper(dtf.format(itemData.getValue().getAno())));
+		colAno.setCellValueFactory(itemData -> new ReadOnlyStringWrapper(dtf.format(itemData.getValue().getAno())));
 
-		table.getColumns().addAll(colId, colNome, colAutor, colEditora, colDisponibilidade, colGenero/*, colValor*/, colAno);
+		table.getColumns().addAll(colId, colNome, colAutor, colEditora, colDisponibilidade, colGenero, colValor, colAno);
 
 	}
 

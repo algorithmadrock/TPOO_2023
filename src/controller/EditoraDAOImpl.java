@@ -38,7 +38,7 @@ public class EditoraDAOImpl implements EditoraDAO{
 	@Override
 	public void salvar(Editora ed) {
 		
-		String sql = "INSERT INTO editora " + "(id, nome, localizacao) VALUES " + "(?, ?, ?)";
+		String sql = "INSERT INTO editora " + "(Id, Nome, Localizacao) VALUES " + "(?, ?, ?)";
 
 		try {
 			
@@ -67,7 +67,7 @@ public class EditoraDAOImpl implements EditoraDAO{
 	public List<Editora> pesquisarNome(String nome) {
 
 		List<Editora> lista = new ArrayList<>();
-		String sql = "SELECT * FROM editora WHERE nome LIKE ?";
+		String sql = "SELECT * FROM editora WHERE Nome LIKE ?";
 		
 		try {
 
@@ -78,9 +78,9 @@ public class EditoraDAOImpl implements EditoraDAO{
 			while (rs.next()) {
 				
 				Editora ed = new Editora();
-				ed.setId( rs.getInt("id") );
-				ed.setNome( rs.getString("nome") );
-				ed.setLocalizacao( rs.getString("autor") );
+				ed.setId( rs.getInt("Id") );
+				ed.setNome( rs.getString("Nome") );
+				ed.setLocalizacao( rs.getString("Localizacao") );
 				lista.add(ed);
 				
 			}

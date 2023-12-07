@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import java.util.Set;
 import controller.ControllerEditora;
 import entity.Editora;
-import entity.Livro;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Label;
@@ -26,7 +25,6 @@ public class TelaEditora implements TelaMudar{
 	private TextField txtId = new TextField();
 	private TextField txtNome = new TextField();
 	private TextField txtLocalizacao = new TextField();
-	private TableView<Livro> tableLivro = new TableView<>();
 	private Button btnPesquisar = new Button("Pesquisar");
 	private Button btnSalvar = new Button("Salvar");
 	private ControllerEditora control = new ControllerEditora();
@@ -44,7 +42,7 @@ public class TelaEditora implements TelaMudar{
 		tableEditora.setItems(control.getLista());
 		
 		TableColumn<Editora, Integer> colId = new TableColumn<>("Id");
-		colId.setCellValueFactory(new PropertyValueFactory<Editora, Integer>("id"));
+		colId.setCellValueFactory(new PropertyValueFactory<Editora, Integer>("Id"));
 
 		TableColumn<Editora, String> colNome = new TableColumn<>("Nome");
 		colNome.setCellValueFactory(itemData ->	new ReadOnlyStringWrapper(itemData.getValue().getNome()));
@@ -98,5 +96,4 @@ public class TelaEditora implements TelaMudar{
 		return tableEditora;
 		
 	}
-
 }
