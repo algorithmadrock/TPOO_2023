@@ -4,6 +4,8 @@ public class Cliente extends Pessoa {
 	private int id;
 	private String endereco;
 	private String telefone;
+	private String email;
+	private String cpf;
 
 	public int getId() {
 		return id;
@@ -45,6 +47,5 @@ public class Cliente extends Pessoa {
 		this.cpf = cpf;
 	}
 
-	private String email;
-	private String cpf;
+
 }

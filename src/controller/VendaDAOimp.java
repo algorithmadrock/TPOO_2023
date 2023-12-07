@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import entity.Cliente;
 import entity.Funcionario;
 import entity.Venda;
 
@@ -38,8 +41,8 @@ public class VendaDAOimp implements VendaDAO{
 				+ "(?, ?, ?, ?)";
 			try {
 				PreparedStatement stmt = con.prepareStatement(sql);
-				stmt.setInt(1, v.getIdFunc());
-				stmt.setInt(2, v.getIdClie());
+				stmt.setInt(1, v.getFunc());
+				stmt.setInt(2, v.getClie());
 				stmt.setDate(3, Date.valueOf(v.getData()));
 				stmt.setFloat(4, v.getValor());
 				stmt.executeUpdate();
@@ -51,14 +54,56 @@ public class VendaDAOimp implements VendaDAO{
 
 	@Override
 	public List<Venda> lerTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Venda> lista = new ArrayList<>();
+		String sql = "SELECT * FROM venda";
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) { 
+				Venda v = new Venda();
+				v.setId( rs.getInt("id") );
+				Funcionario f = new Funcionario();
+				f.setId(rs.getInt("idFuncionario"));
+				v.setFunc(f);
+				Cliente c = new Cliente();
+				c.setId(rs.getInt("idCliente"));
+				v.setClie(c);
+				v.setData(rs.getDate("data").toLocalDate());
+				v.setValor(rs.getFloat("valor"));
+				lista.add(v);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lista;
 	}
 
 	@Override
-	public List<Venda> pesquisarNome(String nome) {
+	public List<Venda> pesquisarId(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Venda> lista = new ArrayList<>();
+		String sql = "SELECT * FROM venda WHERE Id LIKE ?";
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, "%" + id + "%");
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) { 
+				Venda v = new Venda();
+				v.setId( rs.getInt("id") );
+				Funcionario f = new Funcionario();
+				f.setId(rs.getInt("idFuncionario"));
+				v.setFunc(f);
+				Cliente c = new Cliente();
+				c.setId(rs.getInt("idCliente"));
+				v.setClie(c);
+				lista.add(v);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lista;
 	}
 	
 

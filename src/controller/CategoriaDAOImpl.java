@@ -11,9 +11,9 @@ import java.util.List;
 import entity.Categoria;
 
 public class CategoriaDAOImpl implements CategoriaDAO {
-	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/biblioteca";
+	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/livraria";
 	private static final String JDBC_USER = "root";
-	private static final String JDBC_PASS = "alunofatec";
+	private static final String JDBC_PASS = "";
 	private Connection con;
 
 	public CategoriaDAOImpl() {

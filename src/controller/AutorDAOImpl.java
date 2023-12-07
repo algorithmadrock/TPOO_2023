@@ -12,14 +12,14 @@ import java.util.List;
 import entity.Autor;
 
 public class AutorDAOImpl implements AutorDAO {
-	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/biblioteca";
+	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/livraria";
 	private static final String JDBC_USER = "root";
-	private static final String JDBC_PASS = "alunofatec";
+	private static final String JDBC_PASS = "";
 	private Connection con;
 
 	public AutorDAOImpl() {
 		try {
-			Class.forName("org.mariadb.jbdc.Driver");
+			Class.forName("org.mariadb.jdbc.Driver");
 			con = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

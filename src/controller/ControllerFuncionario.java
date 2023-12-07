@@ -1,7 +1,7 @@
 package controller;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 import entity.Funcionario;
 import javafx.beans.property.FloatProperty;
@@ -74,13 +74,13 @@ public class ControllerFuncionario {
 	}
 
 	public void lerTodos() {
-		Set<Funcionario> funcionarios = funcionarioDAO.lerTodos();
+		List<Funcionario> funcionarios = funcionarioDAO.lerTodos();
 		lista.clear();
 		lista.addAll(funcionarios);
 	}
 
 	public void ler() {
-		Set<Funcionario> funcionarios = funcionarioDAO.pesquisarNome(nome.get());
+		List<Funcionario> funcionarios = funcionarioDAO.pesquisarNome(nome.get());
 		lista.clear();
 		lista.addAll(funcionarios);
 	}

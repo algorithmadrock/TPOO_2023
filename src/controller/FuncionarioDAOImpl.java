@@ -5,17 +5,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.mariadb.jdbc.Connection;
 
 import entity.Funcionario;
+import javafx.collections.FXCollections;
 
 public class FuncionarioDAOImpl implements FuncionarioDAO {
-	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/biblioteca";
+	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/livraria";
 	private static final String JDBC_USER = "root";
-	private static final String JDBC_PASS = "alunofatec";
+	private static final String JDBC_PASS = "";
 	private Connection con;
 
 	public FuncionarioDAOImpl() {
@@ -52,14 +52,14 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 	}
 
 	@Override
-	public Set<Funcionario> lerTodos() {
+	public List<Funcionario> lerTodos() {
 		return pesquisarNome("");
 	}
 
 	@Override
-	public Set<Funcionario> pesquisarNome(String nome) {
+	public List<Funcionario> pesquisarNome(String nome) {
 		// TODO Auto-generated method stub
-		Set<Funcionario> lista = new HashSet<>();
+		List<Funcionario> lista = FXCollections.observableArrayList();
 		String sql = "SELECT * FROM funcionario WHERE nome LIKE ?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);

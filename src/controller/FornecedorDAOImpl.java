@@ -4,17 +4,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.mariadb.jdbc.Connection;
 
 import entity.Fornecedor;
+import javafx.collections.FXCollections;
 
 public class FornecedorDAOImpl implements FornecedorDAO {
-	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/biblioteca";
+	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/livraria";
 	private static final String JDBC_USER = "root";
-	private static final String JDBC_PASS = "alunofatec";
+	private static final String JDBC_PASS = "";
 	private Connection con;
 
 	public FornecedorDAOImpl() {
@@ -47,14 +47,14 @@ public class FornecedorDAOImpl implements FornecedorDAO {
 	}
 
 	@Override
-	public Set<Fornecedor> lerTodos() {
+	public List<Fornecedor> lerTodos() {
 		return pesquisarNome("");
 	}
 
 	@Override
-	public Set<Fornecedor> pesquisarNome(String nome) {
+	public List<Fornecedor> pesquisarNome(String nome) {
 		// TODO Auto-generated method stub
-		Set<Fornecedor> lista = new HashSet<>();
+		List<Fornecedor> lista = FXCollections.observableArrayList();
 		String sql = "SELECT * FROM fornecedor WHERE nome LIKE ?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
