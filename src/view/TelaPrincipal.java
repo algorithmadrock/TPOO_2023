@@ -8,12 +8,14 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class TelaPrincipal extends Application{
 	
-	
-	
+//	TelaEmprestimo emprestimo = new TelaEmprestimo();
+	TelaDevolucao devolucao = new TelaDevolucao();
+	Pane sub = devolucao.renderizaPainel();	
 	@Override
 	public void start(Stage stage) throws Exception {
 		MenuBar barraMenu = new MenuBar();
@@ -37,6 +39,7 @@ public class TelaPrincipal extends Application{
 		MenuItem funcionario = new MenuItem("Funcionario");
 		MenuItem livro = new MenuItem("Livro");
 		MenuItem venda = new MenuItem("Venda");
+		
 		mAutor.getItems().add(autor);
 		mCategoria.getItems().add(categoria);
 		mCliente.getItems().add(cliente);
@@ -53,8 +56,12 @@ public class TelaPrincipal extends Application{
 		
 		BorderPane painel = new BorderPane();
 		painel.setTop(barraMenu);
+<<<<<<< HEAD
 		painel.setTop(new TelaLivro().renderizaPainel());
 		painel.setTop(new TelaEditora().renderizaPainel());
+=======
+		painel.setCenter(sub);
+>>>>>>> main
 		Scene cena = new Scene(painel);
 		stage.setScene(cena);
 		stage.show();

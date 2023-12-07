@@ -6,6 +6,8 @@ public class Funcionario extends Pessoa {
 	private int id;
 	private String cargo;
 	private LocalDate dtContratacao;
+	private float salario;
+	private String cpf;
 
 	public int getId() {
 		return id;
@@ -46,7 +48,4 @@ public class Funcionario extends Pessoa {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
-	private float salario;
-	private String cpf;
 }

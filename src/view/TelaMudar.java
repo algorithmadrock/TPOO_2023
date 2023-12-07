@@ -5,5 +5,6 @@ import javafx.scene.layout.Pane;
 
 public interface TelaMudar {
 	public Pane renderizaPainel();
+
 	public TableView retornaTabela();
 }
