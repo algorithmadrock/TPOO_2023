@@ -33,8 +33,8 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 
 	@Override
 	public void salvar(Funcionario f) {
-		String sql = "INSERT INTO funcionarios "
-				+ "(id, nome, dtNascimento, cargo, dtContratacao, salario, cpf) VALUES " + "(?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO funcionario "
+				+ "(Id, Nome, Nascimento, Cargo, Contratacao, Salario, Cpf) VALUES " + "(?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, f.getId());
@@ -60,20 +60,20 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 	public Set<Funcionario> pesquisarNome(String nome) {
 		// TODO Auto-generated method stub
 		Set<Funcionario> lista = new HashSet<>();
-		String sql = "SELECT * FROM funcionarios WHERE nome LIKE ?";
+		String sql = "SELECT * FROM funcionario WHERE nome LIKE ?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, "%" + nome + "%");
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Funcionario f = new Funcionario();
-				f.setId(rs.getInt("id"));
-				f.setNome(rs.getString("nome"));
-				f.setDtNascimento(rs.getDate("dtNascimento").toLocalDate());
-				f.setCargo(rs.getString("cargo"));
-				f.setDtContratacao(rs.getDate("dtContratacao").toLocalDate());
-				f.setSalario(rs.getFloat("salario"));
-				f.setCpf(rs.getString("cpf"));
+				f.setId(rs.getInt("Id"));
+				f.setNome(rs.getString("Nome"));
+				f.setDtNascimento(rs.getDate("Nascimento").toLocalDate());
+				f.setCargo(rs.getString("Cargo"));
+				f.setDtContratacao(rs.getDate("Contratacao").toLocalDate());
+				f.setSalario(rs.getFloat("Salario"));
+				f.setCpf(rs.getString("Cpf"));
 				lista.add(f);
 			}
 		} catch (SQLException e) {
