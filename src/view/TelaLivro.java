@@ -24,7 +24,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TextField;
 
 public class TelaLivro implements TelaMudar {
-<<<<<<< HEAD
 
 	private TableView<Livro> table = new TableView<>();
 	private TextField txtId = new TextField();
@@ -124,8 +123,6 @@ public class TelaLivro implements TelaMudar {
 		return panPrincipal;
 
 	}
-=======
->>>>>>> main
 
 	@Override
 	public Pane renderizaPainel() {

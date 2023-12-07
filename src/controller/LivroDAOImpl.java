@@ -80,7 +80,7 @@ public class LivroDAOImpl implements LivroDAO {
 	                autor = new Autor();
 	                autor.setId(rs.getInt("Id"));
 	                autor.setNome(rs.getString("Nome"));
-	                autor.setDataNascimento(rs.getDate("Nascimento").toLocalDate());
+	                autor.setDtNascimento(rs.getDate("Nascimento").toLocalDate());
 	                autor.setNacionalidade(rs.getString("Nacionalidade"));
 	            
 	        	}

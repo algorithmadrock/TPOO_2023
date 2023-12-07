@@ -21,7 +21,7 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 	public FuncionarioDAOImpl() {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			con = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
+			con = (Connection) DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

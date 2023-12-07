@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import entity.Categoria;
@@ -48,7 +49,7 @@ public class CategoriaDAOImpl implements CategoriaDAO {
 
 	@Override
 	public List<Categoria> pesquisarNome(String nome) {
-		List<Categoria> lista = ArrayList<>();
+		List<Categoria> lista = new ArrayList<>();
 		String sql = "SELECT * FROM categoria WHERE nome LIKE ?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);

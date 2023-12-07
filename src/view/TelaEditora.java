@@ -19,7 +19,6 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TextField;
 
-<<<<<<< HEAD
 public class TelaEditora implements TelaMudar{
 	
 	private TableView<Editora> tableEditora = new TableView<>();
@@ -83,9 +82,6 @@ public class TelaEditora implements TelaMudar{
 		return panPrincipal;
 
 	}
-=======
-public class TelaEditora implements TelaMudar {
->>>>>>> main
 
 	@Override
 	public Pane renderizaPainel() {
