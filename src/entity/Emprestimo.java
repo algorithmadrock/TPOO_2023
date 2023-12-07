@@ -33,8 +33,12 @@ public class Emprestimo {
 		return devolucao;
 	}
 
-	public void setDevolucao(LocalDate dtEmprestimo, int dias) {
+	public void setDevolucao(LocalDate emprestimo, int dias) {
 		this.devolucao = emprestimo.plusDays(dias);
+	}
+	
+	public void setDevolucao(LocalDate devolucao) {
+		this.devolucao = devolucao;
 	}
 
 	public String getNmClie() {

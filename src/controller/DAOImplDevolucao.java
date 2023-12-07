@@ -1,120 +1,77 @@
 package controller;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import entity.Devolucao;
-import entity.Emprestimo;
 
-public class DAOImplDevolucao implements DAODevolucao{
-	//ALTERAR DADOS DO BANCO DE DADOS
-		private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/escola?characterEncoding=latin1";
-		private static final String JDBC_USER = "root";
-		private static final String JDBC_PASS = "123456";
-		private Connection con;
-		
-		public DAOImplDevolucao() { 
-			try {
-				Class.forName("org.mariadb.jdbc.Driver");
-				con = DriverManager.getConnection( JDBC_URL, JDBC_USER, JDBC_PASS);
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
+public class DAOImplDevolucao implements DAODevolucao {
+	// ALTERAR DADOS DO BANCO DE DADOS
+	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/biblioteca";
+	private static final String JDBC_USER = "root";
+	private static final String JDBC_PASS = "alunofatec";
+	private Connection con;
+
+	public DAOImplDevolucao() {
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			con = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void salvar(Devolucao dev) {
+		String sql = "INSERT INTO devolucao(id, data, multa, status) VALUES (?, ?, ?, ?)";
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, dev.getId());
+			stmt.setDate(2, Date.valueOf(dev.getData()));
+			stmt.setFloat(3, dev.getMulta());
+			stmt.setBoolean(4, dev.isStatus());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public List<Devolucao> lerTodos() {
+		return pesquisarId(0);
+	}
+
+	@Override
+	public List<Devolucao> pesquisarId(int id) {
+		// TODO Auto-generated method stub
+		List<Devolucao> lista = new ArrayList<>();
+		String sql = "SELECT * FROM devolucao WHERE id LIKE ?";
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, "%" + id + "%");
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Devolucao dev = new Devolucao();
+				dev.setId(rs.getInt("Id"));
+				dev.setData(rs.getDate("Data").toLocalDate());
+				dev.setMulta(rs.getFloat("Multa"));
+				dev.setStatus(rs.getBoolean("Status"));
+				lista.add(dev);
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		@Override
-		public void salvar(Devolucao dev) {
-			// TODO Auto-generated method stub		
-		}
-
-		public List<Devolucao> lerTodos() {
-			// TODO Auto-generated method stub
-			return null;			
-		}
-		@Override
-		public List<Devolucao> pesquisarId(int id) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+		return lista;
+	}
 }
-
-	/*
-	import java.sql.Connection;
-	import java.sql.Date;
-	import java.sql.DriverManager;
-	import java.sql.PreparedStatement;
-	import java.sql.ResultSet;
-	import java.sql.SQLException;
-	import java.util.ArrayList;
-	import java.util.List;
-
-	public class AlunoDAOImpl implements AlunoDAO {
-		
-		private static final String JDBC_URL =
-				"jdbc:mariadb://localhost:3306/escola?characterEncoding=latin1";
-		private static final String JDBC_USER = "root";
-		private static final String JDBC_PASS = "alunofatec";
-		private Connection con;
-		public AlunoDAOImpl() { 
-			try {
-				Class.forName("org.mariadb.jdbc.Driver");
-				con = DriverManager.getConnection(
-						JDBC_URL, JDBC_USER, JDBC_PASS);
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		@Override
-		public void salvar(Aluno a) {
-			String sql = "INSERT INTO alunos(id, ra, nome, nascimento) VALUES (?, ?, ?, ?)";
-			try {
-				PreparedStatement stmt = con.prepareStatement(sql);
-				stmt.setLong(1, a.getId());
-				stmt.setString(2, a.getRa());
-				stmt.setString(3, a.getNome());
-				stmt.setDate(4, Date.valueOf(a.getNascimento()));
-				stmt.executeUpdate();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
-		@Override
-		public List<Aluno> lerTodos() {
-			return pesquisarNome("");
-		}
-
-		@Override
-		public List<Aluno> pesquisarNome(String nome) {
-			// TODO Auto-generated method stub
-			List<Aluno> lista = new ArrayList<>();
-			String sql = "SELECT * FROM alunos WHERE nome LIKE ?";
-			try {
-				PreparedStatement stmt = con.prepareStatement(sql);
-				stmt.setString(1, "%" + nome + "%");
-				ResultSet rs = stmt.executeQuery();
-				while (rs.next()) { 
-					Aluno a = new Aluno();
-					a.setId( rs.getLong("id") );
-					a.setRa( rs.getString("ra") );
-					a.setNome( rs.getString("nome") );
-					a.setNascimento( rs.getDate("nascimento").toLocalDate() );
-					lista.add(a);
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return lista;
-		}
-
-	}*/

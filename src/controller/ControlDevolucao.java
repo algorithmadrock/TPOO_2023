@@ -8,6 +8,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -29,7 +30,8 @@ public class ControlDevolucao {
 		id = new SimpleIntegerProperty(0);
 		Data = new SimpleObjectProperty<>(LocalDate.now());
 		multa = new SimpleFloatProperty(0);
-		multa = new SimpleFloatProperty(0);
+		status = new SimpleBooleanProperty();
+		
 		devolucaoDAO = new DAOImplDevolucao();
 		lista = FXCollections.observableArrayList();
 	}

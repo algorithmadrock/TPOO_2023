@@ -62,34 +62,34 @@ public class TelaDevolucao implements TelaMudar{
 	public void centertela() {
 		
 		GridPane subpainel = new GridPane();
-		subpainel.setRowSpan(subpainel, 6);
-		subpainel.setColumnSpan(subpainel, 6);
+		subpainel.setRowSpan(subpainel, 5);
+		subpainel.setColumnSpan(subpainel, 2);
 		
 		//ELEMENTOS DO CENÁRIO
 		Label lblId = new Label("ID # "); 
-		subpainel.add(lblId, 2, 1);
+		subpainel.add(lblId, 1, 1);
 		TextField txtId = new TextField();
-		subpainel.add(txtId, 3, 1);
+		subpainel.add(txtId, 2, 1);
 		txtId.setEditable(false);
 		
 		Label lblData = new Label("DATA "); 
-		subpainel.add(lblData, 2, 2);
+		subpainel.add(lblData, 1, 2);
 		TextField txtData = new TextField();
-		subpainel.add(txtData, 3, 2);
+		subpainel.add(txtData, 2, 2);
 		
 		Label lblStatus = new Label("STATUS"); 
-		subpainel.add(lblStatus, 7, 5);
+		subpainel.add(lblStatus,1, 3);
 		TextField txtStatus = new TextField();
-		subpainel.add(txtStatus, 8, 6);
+		subpainel.add(txtStatus, 2, 3);
 		txtStatus.setEditable(false);
 		
 		Label lblMulta = new Label("MULTA "); 
-		subpainel.add(lblMulta, 5, 4);
+		subpainel.add(lblMulta, 1, 4);
 		TextField txtMulta = new TextField();
-		subpainel.add(txtMulta, 6, 3);
+		subpainel.add(txtMulta, 2, 4);
 		
 		Button btnsalvar = new Button("Adicionar");
-		subpainel.add(btnsalvar, 10, 8);
+		subpainel.add(btnsalvar, 1, 5);
 		
 		painel.setCenter(subpainel);
 		generateBindings(txtId, txtData, txtStatus, txtMulta);
