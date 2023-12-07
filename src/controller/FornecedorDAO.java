@@ -1,13 +1,13 @@
 package controller;
 
-import java.util.Set;
+import java.util.List;
 
 import entity.Fornecedor;
 
 public interface FornecedorDAO {
 	void salvar(Fornecedor f);
 
-	Set<Fornecedor> lerTodos();
+	List<Fornecedor> lerTodos();
 
-	Set<Fornecedor> pesquisarNome(String nome);
+	List<Fornecedor> pesquisarNome(String nome);
 }

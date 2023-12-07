@@ -6,8 +6,8 @@ import java.util.Set;
 public class Venda {
 
 	private int id;
-	private int idfunc;
-	private int idclie;
+	private int func;
+	private int clie;
 	private LocalDate data;
 	private float valor;
 	private Set<Livro> itens;
@@ -24,20 +24,20 @@ public class Venda {
 		this.id = id;
 	}
 
-	public int getIdFunc() {
-		return idfunc;
+	public int getFunc() {
+		return func;
 	}
 
-	public void setIdFunc(Funcionario funcionario) {
-		this.idfunc = funcionario.getId();
+	public void setFunc(Funcionario funcionario) {
+		this.func = funcionario.getId();
 	}
 
-	public int getIdClie() {
-		return idclie;
+	public int getClie() {
+		return clie;
 	}
 
-	public void setIdClie(Cliente cliente) {
-		this.idclie = cliente.getId();
+	public void setClie(Cliente cliente) {
+		this.clie = cliente.getId();
 	}
 
 	public LocalDate getData() {

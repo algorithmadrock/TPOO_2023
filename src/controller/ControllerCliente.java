@@ -1,6 +1,7 @@
 package controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import entity.Cliente;
 import javafx.beans.property.IntegerProperty;
@@ -17,22 +18,29 @@ public class ControllerCliente {
 	
 	private IntegerProperty id = new SimpleIntegerProperty();
 	private StringProperty nome = new SimpleStringProperty();
-	private ObjectProperty<LocalDate> nascimento = new SimpleObjectProperty<>();
+	private ObjectProperty<LocalDate> nascimento = new SimpleObjectProperty<>(LocalDate.now());
 	private StringProperty cpf = new SimpleStringProperty();
-	private StringProperty endereco = new SimpleStringProperty();
 	private StringProperty telefone = new SimpleStringProperty();
 	private StringProperty email = new SimpleStringProperty();
+	private StringProperty endereco = new SimpleStringProperty();
+
 	
 	private ClienteDAO bd = new ClienteDAOimp();
 	
 	private ObservableList<Cliente> clientes = FXCollections.observableArrayList();
 	
 	public ObservableList<Cliente> getLista() {
-		clientes.addAll(bd.pesquisarNome(null));
+		lerTodos();
 		return clientes;
 	}
 	
-	public void SalvarCliente() {
+	public void lerTodos() {
+		List<Cliente> cli = bd.lerTodos();
+		clientes.clear();
+		clientes.addAll(cli);
+	}
+	
+	public void salvarCliente() {
 		Cliente c = new Cliente();
 		c.setId(id.getValue());
 		c.setNome(nome.getValue());
@@ -43,6 +51,14 @@ public class ControllerCliente {
 		c.setEmail(email.getValue());
 		c.setEndereco(endereco.getValue());
 		bd.salvar(c);
+		lerTodos();
+	}
+	
+	public ObservableList<Cliente> pesquisarNome(){
+		List<Cliente> cli = bd.pesquisarNome(nome.getValue());
+		clientes.clear();
+		clientes.addAll(cli);
+		return clientes;
 	}
 	
 	public IntegerProperty idProperty() {
@@ -61,9 +77,6 @@ public class ControllerCliente {
 		return cpf;
 	}
 	
-	public StringProperty enderecoProperty() {
-		return endereco;
-	}
 	
 	public StringProperty telefoneProperty() {
 		return telefone;
@@ -73,5 +86,8 @@ public class ControllerCliente {
 		return email;
 	}
 	
+	public StringProperty enderecoProperty() {
+		return endereco;
+	}
 	
 }

@@ -8,6 +8,7 @@ import entity.Livro;
 import entity.Venda;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyFloatWrapper;
+import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,7 +26,6 @@ public class TelaVenda implements TelaMudar{
 	public TelaVenda() {
 		criaPainel();
 		criaTabelaVenda();
-		criaTabelaLivro();
 		generateBindings();
 	}
 	
@@ -39,31 +39,22 @@ public class TelaVenda implements TelaMudar{
 	private Button botaoSalvar = new Button("Salvar");
 	private Button botaoPesquisar = new Button("Pesquisar");
 	private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	private TableView<Livro> livros = new TableView<>();
 	private TableView<Venda> vendas = new TableView<>();
 	private ControllerVenda cv = new ControllerVenda();
 	
-	private void criaTabelaLivro() {
-		
-		TableColumn<Livro, Integer> colId = new TableColumn<>("Id");
-		colId.setCellValueFactory(
-				new PropertyValueFactory<Livro, Integer>("Id"));
-		TableColumn<Livro, String> colNome = new TableColumn<>("Nome");
-		colNome.setCellValueFactory(
-				itemData -> new ReadOnlyStringWrapper(itemData.getValue().getNome()));
-		livros.getColumns().addAll(colId, colNome);
-	}
 	private void criaTabelaVenda() {
+		
+		vendas.setItems(cv.getLista());
 		
 		TableColumn<Venda, Integer> colId = new TableColumn<>("ID");
 		colId.setCellValueFactory(
 				new PropertyValueFactory<Venda, Integer>("id"));
 		TableColumn<Venda, Integer> colFunc = new TableColumn<>("Funcionario");
 		colFunc.setCellValueFactory(
-				new PropertyValueFactory<Venda, Integer>("idfunc"));
+				new PropertyValueFactory<Venda, Integer>("func"));
 		TableColumn<Venda, Integer> colCli = new TableColumn<>("Cliente");
 		colCli.setCellValueFactory(
-				new PropertyValueFactory<Venda, Integer>("idclie"));
+				new PropertyValueFactory<Venda, Integer>("clie"));
 		TableColumn<Venda, String> colData = new TableColumn<>("Data");
 		colData.setCellValueFactory(
 				itemData -> new ReadOnlyStringWrapper(dtf.format(itemData.getValue().getData())));
@@ -74,8 +65,8 @@ public class TelaVenda implements TelaMudar{
 	}
 	private void generateBindings() {
 		Bindings.bindBidirectional(txtId.textProperty(), cv.idProperty(), new NumberStringConverter());
-		Bindings.bindBidirectional(txtFunc.textProperty(), cv.funcionarioProperty(), new NumberStringConverter());
-		Bindings.bindBidirectional(txtCliente.textProperty(), cv.clienteProperty(), new NumberStringConverter());
+		Bindings.bindBidirectional(txtFunc.textProperty(), cv.funcionarioProperty());
+		Bindings.bindBidirectional(txtCliente.textProperty(), cv.clienteProperty());
 		LocalDateStringConverter localDtf = new LocalDateStringConverter(dtf, dtf);
 		Bindings.bindBidirectional(txtData.textProperty(), cv.dataProperty(), localDtf);
 		Bindings.bindBidirectional(txtValor.textProperty(), cv.valorProperty(), new NumberStringConverter());
@@ -100,9 +91,9 @@ public class TelaVenda implements TelaMudar{
 		painelFormulario.add(botaoPesquisar, 1, 6);
 		
 		botaoSalvar.setOnAction(ct-> cv.salvarCliente());
+		botaoPesquisar.setOnAction(ct -> cv.pesquisarId());
 		
 		painelGeral.setCenter(painelFormulario);
-		painelGeral.setRight(livros);
 		painelGeral.setBottom(vendas);
 		
 	}	

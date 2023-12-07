@@ -14,9 +14,9 @@ import entity.Devolucao;
 
 public class DAOImplDevolucao implements DAODevolucao {
 	// ALTERAR DADOS DO BANCO DE DADOS
-	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/biblioteca";
+	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/livraria";
 	private static final String JDBC_USER = "root";
-	private static final String JDBC_PASS = "alunofatec";
+	private static final String JDBC_PASS = "";
 	private Connection con;
 
 	public DAOImplDevolucao() {

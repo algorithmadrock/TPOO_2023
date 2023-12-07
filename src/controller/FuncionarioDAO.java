@@ -1,13 +1,13 @@
 package controller;
 
-import java.util.Set;
+import java.util.List;
 
 import entity.Funcionario;
 
 public interface FuncionarioDAO {
 	void salvar(Funcionario f);
 
-	Set<Funcionario> lerTodos();
+	List<Funcionario> lerTodos();
 
-	Set<Funcionario> pesquisarNome(String nome);
+	List<Funcionario> pesquisarNome(String nome);
 }

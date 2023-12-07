@@ -58,8 +58,8 @@ public class TelaCliente implements TelaMudar{
 		painel.add(btnSalvar, 0, 7);
 		painel.add(btnPesquisar, 1, 7);
 		
-		btnSalvar.setOnAction(ct -> cc.SalvarCliente());
-		//btnPesquisar.setOnAction(ct -> cc.);
+		btnSalvar.setOnAction(ct -> cc.salvarCliente());
+		btnPesquisar.setOnAction(ct -> cc.pesquisarNome());
 		
 		painelGeral.setCenter(painel);
 		painelGeral.setBottom(tabela);
@@ -85,7 +85,7 @@ public class TelaCliente implements TelaMudar{
 		
 		TableColumn<Cliente, Integer> colId = new TableColumn<>("ID");
 		colId.setCellValueFactory(
-				new PropertyValueFactory<Cliente, Integer>("ID"));
+				new PropertyValueFactory<Cliente, Integer>("id"));
 		
 		TableColumn<Cliente, String> colNome = new TableColumn<>("Nome");
 		colNome.setCellValueFactory(
@@ -105,11 +105,11 @@ public class TelaCliente implements TelaMudar{
 				itemData -> new ReadOnlyStringWrapper(itemData.getValue().getTelefone()));
 		
 		TableColumn<Cliente, String> colEmail = new TableColumn<>("E-mail");
-		colTel.setCellValueFactory(
+		colEmail.setCellValueFactory(
 				itemData -> new ReadOnlyStringWrapper(itemData.getValue().getEmail()));
 		
 		TableColumn<Cliente, String> colEnd = new TableColumn<>("Endereço");
-		colTel.setCellValueFactory(
+		colEnd.setCellValueFactory(
 				itemData -> new ReadOnlyStringWrapper(itemData.getValue().getEndereco()));
 		
 		tabela.getColumns().addAll(colId,colNome, colNascimento, colCPF, colTel, colEmail, colEnd);

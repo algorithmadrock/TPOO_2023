@@ -1,6 +1,6 @@
 package controller;
 
-import java.util.Set;
+import java.util.List;
 
 import entity.Fornecedor;
 import entity.Livro;
@@ -63,13 +63,13 @@ public class ControllerFornecedor {
 	}
 
 	public void lerTodos() {
-		Set<Fornecedor> fornecedores = fornecedorDAO.lerTodos();
+		List<Fornecedor> fornecedores =fornecedorDAO.lerTodos();
 		lista.clear();
 		lista.addAll(fornecedores);
 	}
 
 	public void ler() {
-		Set<Fornecedor> fornecedores = fornecedorDAO.pesquisarNome(nome.get());
+		List<Fornecedor> fornecedores =fornecedorDAO.pesquisarNome(nome.get());
 		lista.clear();
 		lista.addAll(fornecedores);
 	}
