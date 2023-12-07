@@ -10,7 +10,6 @@ public class Devolucao {
 	private boolean status;
 	
 	public Devolucao() {
-		id++;
 	}
 	
 	public float calcMulta(LocalDate emprestimo, int prazo) {

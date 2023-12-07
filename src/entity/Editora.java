@@ -6,7 +6,6 @@ public class Editora {
 	private int id;
 	private String nome;
 	private String localizacao;
-	private Set<Livro> catalogo;
 
 	public int getId() {
 		return id;
@@ -30,13 +29,5 @@ public class Editora {
 
 	public void setLocalizacao(String localizacao) {
 		this.localizacao = localizacao;
-	}
-
-	public Set<Livro> getCatalogo() {
-		return catalogo;
-	}
-
-	public void setCatalogo(Set<Livro> catalogo) {
-		this.catalogo = catalogo;
 	}
 }
