@@ -14,16 +14,6 @@ import javafx.collections.ObservableList;
 
 public class ControllerCliente {
 
-	/*
-	private TextField txtId = new TextField("ID");
-	private TextField txtNome = new TextField("Nome");
-	private TextField txtNascimento = new TextField("Data de nascimento");
-	private TextField txtCPF = new TextField("CPF");
-	private TextField txtEndereco= new TextField("Endereco");
-	private TextField txtTelefone = new TextField("Telefone");
-	private TextField txtEmail = new TextField("Email");
-	private TableView<Cliente> tabela = new TableView<>();
-	*/
 	
 	private IntegerProperty id = new SimpleIntegerProperty();
 	private StringProperty nome = new SimpleStringProperty();
@@ -51,6 +41,7 @@ public class ControllerCliente {
 		c.setEndereco(endereco.getValue());
 		c.setTelefone(telefone.getValue());
 		c.setEmail(email.getValue());
+		c.setEndereco(endereco.getValue());
 		bd.salvar(c);
 	}
 	

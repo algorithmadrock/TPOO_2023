@@ -12,9 +12,9 @@ import java.util.List;
 import entity.Cliente;
 
 public class ClienteDAOimp implements ClienteDAO{
-	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/biblioteca";
+	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/Livraria";
 	private static final String JDBC_USER = "root";
-	private static final String JDBC_PASS = "alunofatec";
+	private static final String JDBC_PASS = "";
 	private Connection con;
 	
 	public ClienteDAOimp() {
@@ -34,17 +34,16 @@ public class ClienteDAOimp implements ClienteDAO{
 	@Override
 	public void salvar(Cliente c) {
 		String sql = "INSERT INTO cliente "
-			+ "(id, nome, nascimento, telefone, email, endereco) VALUES "
-			+ "(?, ?, ?, ?)";
+			+ "(nome, nascimento, cpf, telefone, email, endereco) VALUES "
+			+ "(?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setLong(1, c.getId());
-			stmt.setString(2, c.getNome());
-			stmt.setDate(3, Date.valueOf(c.getDtNascimento()));
-			stmt.setString(4, c.getCpf());
-			stmt.setString(5, c.getTelefone());
-			stmt.setString(6, c.getEmail());
-			stmt.setString(7, c.getEndereco());
+			stmt.setString(1, c.getNome());
+			stmt.setDate(2, Date.valueOf(c.getDtNascimento()));
+			stmt.setString(3, c.getCpf());
+			stmt.setString(4, c.getTelefone());
+			stmt.setString(5, c.getEmail());
+			stmt.setString(6, c.getEndereco());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -87,7 +86,7 @@ public class ClienteDAOimp implements ClienteDAO{
 	public Cliente pesquisarId(int id) {
 		// TODO Auto-generated method stub
 		Cliente c = new Cliente();		
-		String sql = "SELECT * FROM cliente WHERE = ?";
+		String sql = "SELECT * FROM cliente WHERE Id = ?";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, id);

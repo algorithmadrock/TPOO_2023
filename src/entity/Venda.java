@@ -61,6 +61,11 @@ public class Venda {
 		}
 		this.valor = valor;
 	}
+	
+	public void setValor(float valor) {
+		this.valor=valor;
+	}
+
 
 	public Set<Livro> getItens() {
 		return itens;

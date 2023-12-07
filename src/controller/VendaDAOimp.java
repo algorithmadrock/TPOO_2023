@@ -13,9 +13,9 @@ import entity.Venda;
 public class VendaDAOimp implements VendaDAO{
 	
 	private static final String JDBC_URL =
-			"jdbc:mariadb://localhost:3306/escola?characterEncoding=latin1";
+			"jdbc:mariadb://localhost:3306/livraria";
 	private static final String JDBC_USER = "root";
-	private static final String JDBC_PASS = "Clientefatec";
+	private static final String JDBC_PASS = "";
 	private Connection con;
 	public VendaDAOimp() { 
 		try {

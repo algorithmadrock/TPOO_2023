@@ -13,9 +13,9 @@ import org.mariadb.jdbc.Connection;
 import entity.Funcionario;
 
 public class FuncionarioDAOImpl implements FuncionarioDAO {
-	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/biblioteca";
+	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/Livraria";
 	private static final String JDBC_USER = "root";
-	private static final String JDBC_PASS = "alunofatec";
+	private static final String JDBC_PASS = "";
 	private Connection con;
 
 	public FuncionarioDAOImpl() {
@@ -34,7 +34,7 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 	@Override
 	public void salvar(Funcionario f) {
 		String sql = "INSERT INTO funcionario "
-				+ "(nome, dtNascimento, cargo, dtContratacao, salario, cpf) VALUES " + "(?, ?, ?, ?, ?, ?)";
+				+ "(nome, Nascimento, cargo, Contratacao, salario, cpf) VALUES " + "(?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setString(1, f.getNome());
@@ -68,9 +68,9 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 				Funcionario f = new Funcionario();
 				f.setId(rs.getInt("id"));
 				f.setNome(rs.getString("nome"));
-				f.setDtNascimento(rs.getDate("dtNascimento").toLocalDate());
+				f.setDtNascimento(rs.getDate("nascimento").toLocalDate());
 				f.setCargo(rs.getString("cargo"));
-				f.setDtContratacao(rs.getDate("dtContratacao").toLocalDate());
+				f.setDtContratacao(rs.getDate("contratacao").toLocalDate());
 				f.setSalario(rs.getFloat("salario"));
 				f.setCpf(rs.getString("cpf"));
 				lista.add(f);
@@ -84,7 +84,7 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 	
 	public Funcionario pesquisarId(int id) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT * FROM funcionarios WHERE Id = ?";
+		String sql = "SELECT * FROM funcionario WHERE Id = ?";
 		Funcionario f = new Funcionario();
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
@@ -93,9 +93,9 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
 			while (rs.next()) {
 				f.setId(rs.getInt("id"));
 				f.setNome(rs.getString("nome"));
-				f.setDtNascimento(rs.getDate("dtNascimento").toLocalDate());
+				f.setDtNascimento(rs.getDate("nascimento").toLocalDate());
 				f.setCargo(rs.getString("cargo"));
-				f.setDtContratacao(rs.getDate("dtContratacao").toLocalDate());
+				f.setDtContratacao(rs.getDate("contratacao").toLocalDate());
 				f.setSalario(rs.getFloat("salario"));
 				f.setCpf(rs.getString("cpf"));
 			}

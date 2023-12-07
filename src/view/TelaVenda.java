@@ -2,6 +2,8 @@ package view;
 
 import java.time.format.DateTimeFormatter;
 
+import controller.ControllerCliente;
+import controller.ControllerVenda;
 import entity.Livro;
 import entity.Venda;
 import javafx.beans.binding.Bindings;
@@ -39,6 +41,7 @@ public class TelaVenda implements TelaMudar{
 	private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	private TableView<Livro> livros = new TableView<>();
 	private TableView<Venda> vendas = new TableView<>();
+	private ControllerVenda cv = new ControllerVenda();
 	
 	private void criaTabelaLivro() {
 		
@@ -70,7 +73,13 @@ public class TelaVenda implements TelaMudar{
 		vendas.getColumns().addAll(colId, colFunc, colCli, colData, colValor);
 	}
 	private void generateBindings() {
-		//Bindings.bindBidirectional(txtId, null);
+		Bindings.bindBidirectional(txtId.textProperty(), cv.idProperty(), new NumberStringConverter());
+		Bindings.bindBidirectional(txtFunc.textProperty(), cv.funcionarioProperty(), new NumberStringConverter());
+		Bindings.bindBidirectional(txtCliente.textProperty(), cv.clienteProperty(), new NumberStringConverter());
+		LocalDateStringConverter localDtf = new LocalDateStringConverter(dtf, dtf);
+		Bindings.bindBidirectional(txtData.textProperty(), cv.dataProperty(), localDtf);
+		Bindings.bindBidirectional(txtValor.textProperty(), cv.valorProperty(), new NumberStringConverter());
+
 		
 	}
 	private void criaPainel() {
@@ -89,6 +98,8 @@ public class TelaVenda implements TelaMudar{
 		painelFormulario.add(txtLivro, 1, 5);
 		painelFormulario.add(botaoSalvar, 0, 6);
 		painelFormulario.add(botaoPesquisar, 1, 6);
+		
+		botaoSalvar.setOnAction(ct-> cv.salvarCliente());
 		
 		painelGeral.setCenter(painelFormulario);
 		painelGeral.setRight(livros);

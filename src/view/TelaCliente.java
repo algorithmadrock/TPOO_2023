@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.converter.LocalDateStringConverter;
@@ -23,8 +24,7 @@ public class TelaCliente implements TelaMudar{
 		criaBindings();
 		criarTabela();
 	}
-
-	private GridPane painel = new GridPane();
+	private BorderPane painelGeral = new BorderPane();
 	private TextField txtId = new TextField("ID");
 	private TextField txtNome = new TextField("Nome");
 	private TextField txtNascimento = new TextField("Data de nascimento");
@@ -40,6 +40,7 @@ public class TelaCliente implements TelaMudar{
 	
 	
 	private void criaPainel() {
+		GridPane painel = new GridPane();
 		painel.add(new Label("ID: "), 0, 0);
 		painel.add(txtId, 1, 0);
 		painel.add(new Label("Nome: "), 0, 1);
@@ -56,7 +57,12 @@ public class TelaCliente implements TelaMudar{
 		painel.add(txtEndereco, 1, 6);
 		painel.add(btnSalvar, 0, 7);
 		painel.add(btnPesquisar, 1, 7);
-				
+		
+		btnSalvar.setOnAction(ct -> cc.SalvarCliente());
+		//btnPesquisar.setOnAction(ct -> cc.);
+		
+		painelGeral.setCenter(painel);
+		painelGeral.setBottom(tabela);
 	}
 	
 	private void criaBindings() {
@@ -111,11 +117,11 @@ public class TelaCliente implements TelaMudar{
 	
 	@Override
 	public Pane renderizaPainel() {
-		return painel;
+		return painelGeral;
 	}
 
 	@Override
-	public TableView retornaTabela() {
+	public TableView<Cliente> retornaTabela() {
 		return tabela;
 	}
 
